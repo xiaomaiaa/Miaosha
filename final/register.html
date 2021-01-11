@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>秒杀系统 注册界面</title>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!--flex弹性盒子模型，justify-content：主抽 -->
+        <div style="display: flex;justify-content: center;margin-top: 150px">
+          <el-card style="width: 400px">
+            <div slot="header" class="clearfix">
+              <span>秒杀系统1.0</span>
+            </div>
+            <table>
+              <tr>
+                <td>用户名</td>
+                <td>
+                  <el-input v-model="user.username" placeholder="请输入用户名"></el-input>
+                </td>
+              </tr>
+              <tr>
+                <td>新密码</td>
+                <td>
+                  <el-input type="password" v-model="user.password" placeholder="请输入密码"></el-input>
+                </td>
+              </tr>
+              <tr>
+                <td>重复密码</td>
+                <td>
+                  <el-input type="password" v-model="user.password2" placeholder="请再次输入密码" @keydown.enter.native="doRegister"></el-input>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2">密码由6-16位数字和字母组成</td>
+              </tr>
+              <tr>
+                <!-- 占两行-->
+                <td colspan="2">
+                  <el-button style="width: 150px" type="primary" @click="doRegister">注册</el-button>
+                  <a href="index.html"><el-button style="width: 150px" type="primary">返回登陆</el-button></a>
+                </td>
+              </tr>
+            </table>
+          </el-card>
+        </div>
+      </div>
+
+
+<script>
+const app = new Vue({
+  el: '#app',
+  data: {
+    message: 'Hello Vue.js!',
+    user:{
+          username:'',
+          password:'',
+          password2:'',
+        }
+  },
+  methods:{
+    checktoken(){
+      token=localStorage.getItem('token')
+      var params = new URLSearchParams();
+      params.append('token', token);
+      if (token!=null){
+        axios.post('./checktoken.php',params)
+          .then(res=>{
+            //console.log(res.data);
+            if (res.data.result=="SUCCESS"){
+              this.$notify({
+                title: '提示',
+                message: '您已经登录！即将跳转',
+                duration: 3000
+              });
+              var startTime = new Date().getTime() + parseInt(3000, 10);
+              while(new Date().getTime() < startTime) {}
+              window.location.href='selectroom.html'
+            }
+            //window.location.href='selectroom.html'
+          }).catch((e) => {
+            console.log('获取数据失败');
+          });
+      }
+    },
+    doRegister(){//一点击登录按钮，这个方法就会执行
+      if (this.user.username=='' || this.user.password=='' || this.user.password2==''){
+        this.$notify({
+            title: '提示',
+            message: '内容不能为空！',
+            duration: 3000
+          });
+        return false;
+      }  
+      var params = new URLSearchParams();
+      params.append('username', this.user.username);
+      params.append('password',this.user.password);
+      params.append('password2',this.user.password2);
+      axios.post('./doregister.php',params)
+      .then(res => {
+        //console.log('数据是:', res.data);
+        if (res.data.result=="SUCCESS"){
+          this.$notify({
+            title: '提示',
+            message: '用户登录成功',
+            duration: 3000
+          });
+          localStorage.setItem('token',res.data.token)
+          localStorage.setItem('username',this.user.username)
+          window.location.href='notifying/registersuccess.php'
+        } else{
+          this.$notify({
+            title: '提示',
+            message: res.data.reason,
+            duration: 3000
+          });
+        }
+      })
+      .catch((e) => {
+        console.log('获取数据失败');
+      });
+      
+      //alert(JSON.stringify(this.user))//可以直接把this.user对象传给后端进行校验用户名和密码
+    }
+  }
+})
+app.checktoken()
+</script>
+</body>
+</html>

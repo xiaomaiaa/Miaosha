@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>秒杀系统 订单界面</title>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!--flex弹性盒子模型，justify-content：主抽 -->
+        <div style="display: flex;justify-content: center;margin-top: 150px">
+          <el-card style="width: 500px">
+            <div slot="header" class="clearfix">
+              <span>秒杀系统1.0</span>
+            </div>
+            <el-table
+              :data="tableData"
+              style="width: 100%">
+              <el-table-column prop="goodname"  label="商品名"  width="180"></el-table-column>
+              <el-table-column  prop="buynum"  label="购买量"></el-table-column>
+            </el-table>
+            <table style="width:600px">
+              <tr>
+                <p></p>
+              </tr>
+              <tr>
+                <!-- 占两行-->
+                <td colspan="2">
+                  <a href="main.html"><el-button style="width: 150px" type="primary">返回首页</el-button></a>
+                  <el-button style="width: 150px" type="primary" @click="Quit">退出</el-button>
+                </td>
+              </tr>
+            </table>
+          </el-card>
+        </div>
+      </div>
+
+
+<script>
+const app = new Vue({
+  el: '#app',
+  data: {
+    tableData: [{
+            goodid: '',
+            buynum: '',
+            goodname: '',
+          }],
+    message: 'Hello Vue.js!',
+    user:{
+          username:'',
+          password:'',
+        }
+  },
+  methods:{
+    getorders(){
+      username=localStorage.getItem('username')
+      axios.get('./getorders.php',{params: {username:username}})
+      .then(res=>{
+        console.log(res.data);
+        this.tableData=res.data;
+      }).catch((e) => {
+        console.log('获取数据失败');
+      });
+    },
+    checktoken(){
+      token=localStorage.getItem('token')
+      var params = new URLSearchParams();
+      params.append('token', token);
+      if (token!=null){
+        axios.post('./checktoken.php',params)
+          .then(res=>{
+            //console.log(res.data);
+            if (res.data.result=="FAIL"){
+                window.location.href='notifying/notlogin.php';
+            }
+            //window.location.href='selectroom.html'
+          }).catch((e) => {
+            console.log('获取数据失败');
+          });
+      } else{
+        window.location.href='notifying/notlogin.php';
+      }
+    },
+    Quit(){//一点击登录按钮，这个方法就会执行
+        localStorage.removeItem('token');
+        localStorage.removeItem('username');
+        window.location.href='notifying/success.php?url=../index.html';
+
+      //alert(JSON.stringify(this.user))//可以直接把this.user对象传给后端进行校验用户名和密码
+    }
+  }
+})
+app.checktoken()
+app.getorders()
+</script>
+</body>
+</html>

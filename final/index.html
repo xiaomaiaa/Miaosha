@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>秒杀系统 登录界面</title>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<style scoped>
+  .s-canvas {
+    height: 38px;
+    cursor: pointer;
+  }
+  .s-canvas canvas{
+    margin-top: 1px;
+    margin-left: 8px;
+  }
+</style>
+</head>
+<body>
+    <div id="app">
+        <!--flex弹性盒子模型，justify-content：主抽 -->
+        <div style="display: flex;justify-content: center;margin-top: 150px">
+          <el-card style="width: 500px">
+            <div slot="header" class="clearfix">
+              <span>秒杀系统1.0</span>
+            </div>
+            <table style="width:400px">
+              <tr>
+                <td>用户名</td>
+                <td>
+                  <el-input v-model="user.username" placeholder="请输入用户名"></el-input>
+                </td>
+              </tr>
+              <tr>
+                <td>密码</td>
+                <td>
+                  <el-input type="password" v-model="user.password" placeholder="请输入密码" @keydown.enter.native="doLogin"></el-input>
+                  <!-- @keydown.enter.native="doLogin"当按下enter键的时候也会执行doLogin方法-->
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div v-show="seen" class="s-canvas" @click="createdCode">
+                    <canvas id="scanvas" :width="contentWidth" :height="contentHeight"></canvas>
+                  </div>
+                </td>
+                <td>
+                  <el-input v-show="seen" v-model="verifyinput" placeholder="请输入验证码"></el-input>
+                </td>
+                
+              </tr>
+              <tr>
+                <!-- 占两行-->
+                <td colspan="2">
+                  <el-button style="width: 150px" type="primary" @click="doLogin">登录</el-button>
+                  <a href="register.html"><el-button style="width: 150px" type="primary">注册</el-button></a>
+                </td>
+              </tr>
+            </table>
+          </el-card>
+        </div>
+      </div>
+
+
+<script>
+const app = new Vue({
+  props: {
+    fontSizeMin: {
+      type: Number,
+      default: 25
+    },
+    fontSizeMax: {
+      type: Number,
+      default: 30
+    },
+    backgroundColorMin: {
+      type: Number,
+      default: 255
+    },
+    backgroundColorMax: {
+      type: Number,
+      default: 255
+    },
+    colorMin: {
+      type: Number,
+      default: 0
+    },
+    colorMax: {
+      type: Number,
+      default: 160
+    },
+    lineColorMin: {
+      type: Number,
+      default: 100
+    },
+    lineColorMax: {
+      type: Number,
+      default: 255
+    },
+    dotColorMin: {
+      type: Number,
+      default: 0
+    },
+    dotColorMax: {
+      type: Number,
+      default: 255
+    },
+    contentWidth: {
+      type: Number,
+      default: 120
+    },
+    contentHeight: {
+      type: Number,
+      default: 34
+    }
+  },
+  el: '#app',
+  data: {
+    message: 'Hello Vue.js!',
+    user:{
+          username:'',
+          password:'',
+        },
+    verifyinput:'',
+    seen:false,
+    identifyCode: '',
+    logintimes:0
+  },
+  mounted () {
+    this.createdCode()
+  },
+  methods:{
+    createdCode () {
+      const len = 4
+      const codeList = []
+      const chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz0123456789'
+      const charsLen = chars.length
+      for (let i = 0; i < len; i++) {
+        codeList.push(chars.charAt(Math.floor(Math.random() * charsLen)))
+      }
+      this.identifyCode = codeList.join('')
+      this.$emit('getIdentifyCode', this.identifyCode.toLowerCase())
+      this.drawPic()
+      //console.log(this.identifyCode);
+    },
+
+    // 生成一个随机数
+    randomNum (min, max) {
+      return Math.floor(Math.random() * (max - min) + min)
+    },
+    // 生成一个随机的颜色
+    randomColor (min, max) {
+      const r = this.randomNum(min, max)
+      const g = this.randomNum(min, max)
+      const b = this.randomNum(min, max)
+      return 'rgb(' + r + ',' + g + ',' + b + ')'
+    },
+
+    drawPic () {
+      const canvas = document.getElementById('scanvas')
+      const ctx = canvas.getContext('2d')
+      ctx.textBaseline = 'bottom'
+      // 绘制背景
+      ctx.fillStyle = this.randomColor(this.backgroundColorMin, this.backgroundColorMax)
+      ctx.fillRect(0, 0, this.contentWidth, this.contentHeight)
+      // 绘制文字
+      for (let i = 0; i < this.identifyCode.length; i++) {
+        this.drawText(ctx, this.identifyCode[i], i)
+      }
+      this.drawLine(ctx)
+      this.drawDot(ctx)
+    },
+
+    drawText (ctx, txt, i) {
+      ctx.fillStyle = this.randomColor(this.colorMin, this.colorMax)
+      ctx.font = this.randomNum(this.fontSizeMin, this.fontSizeMax) + 'px SimHei'
+      const x = (i + 1) * (this.contentWidth / (this.identifyCode.length + 1))
+      const y = this.randomNum(this.fontSizeMax, this.contentHeight - 5)
+      var deg = this.randomNum(-45, 45)
+      // 修改坐标原点和旋转角度
+      ctx.translate(x, y)
+      ctx.rotate(deg * Math.PI / 180)
+      ctx.fillText(txt, 0, 0)
+      // 恢复坐标原点和旋转角度
+      ctx.rotate(-deg * Math.PI / 180)
+      ctx.translate(-x, -y)
+    },
+
+    // 绘制干扰线
+    drawLine (ctx) {
+      for (let i = 0; i < 5; i++) {
+        ctx.strokeStyle = this.randomColor(this.lineColorMin, this.lineColorMax)
+        ctx.beginPath()
+        ctx.moveTo(this.randomNum(0, this.contentWidth), this.randomNum(0, this.contentHeight))
+        ctx.lineTo(this.randomNum(0, this.contentWidth), this.randomNum(0, this.contentHeight))
+        ctx.stroke()
+      }
+    },
+
+    // 绘制干扰点
+    drawDot (ctx) {
+      for (let i = 0; i < 50; i++) {
+        ctx.fillStyle = this.randomColor(0, 255)
+        ctx.beginPath()
+        ctx.arc(this.randomNum(0, this.contentWidth), this.randomNum(0, this.contentHeight), 1, 0, 2 * Math.PI)
+        ctx.fill()
+      }
+    },
+    checktoken(){
+      token=localStorage.getItem('token')
+      var params = new URLSearchParams();
+      params.append('token', token);
+      if (token!=null){
+        axios.post('./checktoken.php',params)
+          .then(res=>{
+            //console.log(res.data);
+            if (res.data.result=="SUCCESS"){
+              window.location.href='notifying/alreadylogin.php'
+            }
+            //window.location.href='selectroom.html'
+          }).catch((e) => {
+            console.log('获取数据失败');
+          });
+      }
+    },
+    doLogin(){//一点击登录按钮，这个方法就会执行
+      axios.get('./addtimes.php')
+      .then(res=>{
+          this.logintimes=res.data;
+          //console.log(this.logintimes);
+      }).catch((e) => {
+        console.log('获取数据失败');
+      });
+      if (this.seen==true){
+        //console.log(this.verifyinput.toLowerCase());
+        //console.log(this.identifyCode.toLowerCase());
+        if (this.verifyinput.toLowerCase()!=this.identifyCode.toLowerCase()){
+          this.$notify({
+            title: '提示',
+            message: '验证码错误！',
+            duration: 3000
+          });
+          this.createdCode();
+          return ;
+        }
+      }
+      var params = new URLSearchParams();
+      params.append('username', this.user.username);
+      params.append('password',this.user.password);
+      axios.post('./dologin.php',params)
+      .then(res => {
+        //console.log('数据是:', res.data);
+        if (res.data.result=="SUCCESS"){
+          this.$notify({
+            title: '提示',
+            message: '用户登录成功',
+            duration: 3000
+          });
+          axios.get('./cleartimes.php')
+          .then(res=>{
+              this.logintimes=res.data;
+              //console.log(this.logintimes);
+          }).catch((e) => {
+            //console.log('获取数据失败');
+          });
+          localStorage.setItem('token',res.data.token)
+          localStorage.setItem('username',this.user.username)
+          window.location.href='notifying/success.php?url=../main.html'
+        } else{
+          this.$notify({
+            title: '提示',
+            message: '用户登录失败',
+            duration: 3000
+          });
+          if (this.logintimes>=3){
+            this.seen=true;
+            this.createdCode();
+          }
+        }
+      })
+      .catch((e) => {
+        console.log('获取数据失败');
+      });
+      
+      //alert(JSON.stringify(this.user))//可以直接把this.user对象传给后端进行校验用户名和密码
+    },
+    gettimes(){
+      axios.get('./gettimes.php')
+      .then(res=>{
+          this.logintimes=res.data;
+          //console.log(this.logintimes);
+          if (this.logintimes>=3){
+            this.seen=true;
+          }
+      }).catch((e) => {
+        console.log('获取数据失败');
+      });
+    },
+  }
+})
+app.checktoken()
+app.gettimes()
+</script>
+</body>
+</html>

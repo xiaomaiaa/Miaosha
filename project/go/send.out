@@ -1,0 +1,4 @@
+nohup: ignoring input
+start server
+127.0.0.1 - - [28/Dec/2020 22:04:51] "GET /?userid=1&username=mhy&goodid=1&buynum=1 HTTP/1.0" 200 20
+127.0.0.1 - - [28/Dec/2020 22:06:56] "GET /?userid=1&username=mhy&goodid=1&buynum=2 HTTP/1.0" 200 20

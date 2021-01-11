@@ -1,0 +1,149 @@
+<fieldset class="layui-elem-field layui-field-title site-title">
+  <legend><a name="default">宿舍管理</a></legend>
+</fieldset>
+
+    <table class="layui-table">
+        <thead>
+            <tr>
+                <th>房间号</th>
+                <th>所属楼号</th>
+                <th>空床位数</th>
+                <th>总床位数</th>
+                <th>所住性别</th>
+            </tr>
+        </thead>
+        <tbody>
+            {volist name="rooms" id="rooms"}
+            <tr>
+                <td>{$rooms.room}</td>
+                <td>{$rooms.building}</td>
+                <td>{$rooms.vacant}</td>
+                <td>{$rooms.total}</td>
+                <td>{$rooms.sex}</td>
+            </tr>
+            </form>
+            {/volist} 
+        </tbody>
+    </table>
+
+<fieldset class="layui-elem-field layui-field-title site-title">
+    <legend><a name="default">修改宿舍信息</a></legend>
+    </fieldset>
+
+    <form class="layui-form" action="roomchange">
+        <div class="layui-form-item">
+            <label class="layui-form-label">选择宿舍号</label>
+            <div class="layui-input-block">
+                <select name="changeroom" lay-filter="room">
+                    <option value="">选择宿舍号</option>
+                    {volist name="availchangerooms" id="rooms"}
+                    <option value={$rooms.room}>{$rooms.room}</option>
+                    {/volist}
+                  </select>
+            </div>
+        </div>
+        
+        <div class="layui-form-item">
+            <label class="layui-form-label">修改总人数</label>
+            <div class="layui-input-block">
+                <select name="changepopulation" lay-filter="population">
+                    <option value="0">选择总人数（不选择则不修改）</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                  </select>
+            </div>
+        </div>
+        
+        <div class="layui-form-item">
+            <label class="layui-form-label">修改性别</label>
+            <div class="layui-input-block">
+                <select name="changesex" lay-filter="sex">
+                    <option value="0">选择性别（不选择则不修改）</option>
+                    <option value="1">男</option>
+                    <option value="2">女</option>
+                  </select>
+            </div>
+        </div>
+
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit="" lay-filter="change">修改</button></td>
+        </div>
+    </form>
+
+<fieldset class="layui-elem-field layui-field-title site-title">
+    <legend><a name="default">增加新宿舍</a></legend>
+    </fieldset>
+
+    <form class="layui-form" action="roomadd">
+        <div class="layui-form-item">
+            <label class="layui-form-label">输入宿舍号</label>
+            <div class="layui-input-block">
+                <input type="text" name="room" lay-verify="title" autocomplete="off" placeholder="请输入宿舍号" class="layui-input">
+              </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">输入楼号</label>
+            <div class="layui-input-block">
+                <input type="text" name="building" lay-verify="title" autocomplete="off" placeholder="请输入楼号" class="layui-input">
+              </div>
+        </div>
+        
+        <div class="layui-form-item">
+            <label class="layui-form-label">设置总人数</label>
+            <div class="layui-input-block">
+                <select name="setpopulation" lay-filter="population">
+                    <option value="4">请设置总人数（默认为4人间）</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                  </select>
+            </div>
+        </div>
+        
+        <div class="layui-form-item">
+            <label class="layui-form-label">设置性别</label>
+            <div class="layui-input-block">
+                <select name="setsex" lay-filter="sex">
+                    <option value="1">请设置性别（默认为男生宿舍）</option>
+                    <option value="1">男</option>
+                    <option value="2">女</option>
+                  </select>
+            </div>
+        </div>
+
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit="" lay-filter="change">增加宿舍</button></td>
+        </div>
+    </form>
+
+<fieldset class="layui-elem-field layui-field-title site-title">
+    <legend><a name="default">删除宿舍</a></legend>
+    </fieldset>
+
+    <form class="layui-form" action="roomdel">
+        <div class="layui-form-item">
+            <label class="layui-form-label">选择宿舍号</label>
+            <div class="layui-input-block">
+                <select name="delroom" lay-filter="room">
+                    <option value="">选择宿舍号</option>
+                    {volist name="availdelrooms" id="rooms"}
+                    <option value={$rooms.room}>{$rooms.room}</option>
+                    {/volist}
+                    </select>
+            </div>
+        </div>
+
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit="" lay-filter="change">删除宿舍</button></td>
+        </div>
+    </form>
+
+<!-- 右侧内容框架，更改从这里结束 -->
+</div>
+</div>

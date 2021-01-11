@@ -1,0 +1,247 @@
+2020/12/15 19:53:49  [*] Waiting for messages. To exit press CTRL+C
+2020/12/15 19:54:58 Received a message: userid=1&username=mhy&goodid=1&buynum=2
+[userid=1 username=mhy goodid=1 buynum=2]
+map[buynum:2 goodid:1 userid:1 username:mhy]
+1
+2
+2020/12/15 19:55:38 Received a message: userid=1&username=mhy&goodid=2&buynum=3
+[userid=1 username=mhy goodid=2 buynum=3]
+map[buynum:3 goodid:2 userid:1 username:mhy]
+1
+3
+2020/12/15 19:57:30 Received a message: userid=3&username=gcj&goodid=2&buynum=1
+[userid=3 username=gcj goodid=2 buynum=1]
+map[buynum:1 goodid:2 userid:3 username:gcj]
+3
+1
+2020/12/15 19:57:41 Received a message: userid=3&username=gcj&goodid=1&buynum=2
+[userid=3 username=gcj goodid=1 buynum=2]
+map[buynum:2 goodid:1 userid:3 username:gcj]
+3
+2
+2020/12/15 19:57:56 Received a message: userid=3&username=gcj&goodid=3&buynum=3
+[userid=3 username=gcj goodid=3 buynum=3]
+map[buynum:3 goodid:3 userid:3 username:gcj]
+3
+3
+2020/12/15 19:59:26 Received a message: userid=3&username=gcj&goodid=3&buynum=3
+[userid=3 username=gcj goodid=3 buynum=3]
+map[buynum:3 goodid:3 userid:3 username:gcj]
+3
+3
+2020/12/15 20:17:56  [*] Waiting for messages. To exit press CTRL+C
+2020/12/15 20:18:02 Received a message: userid=1&username=mhy&goodid=2&buynum=1
+[userid=1 username=mhy goodid=2 buynum=1]
+map[buynum:1 goodid:2 userid:1 username:mhy]
+1
+1
+2020/12/15 20:19:53 Received a message: userid=1&username=mhy&goodid=3&buynum=3
+[userid=1 username=mhy goodid=3 buynum=3]
+map[buynum:3 goodid:3 userid:1 username:mhy]
+1
+3
+2020/12/15 20:30:29 Received a message: userid=4&username=4396&goodid=3&buynum=3
+[userid=4 username=4396 goodid=3 buynum=3]
+map[buynum:3 goodid:3 userid:4 username:4396]
+4
+3
+2020/12/15 20:30:31 Received a message: userid=4&username=4396&goodid=3&buynum=3
+[userid=4 username=4396 goodid=3 buynum=3]
+map[buynum:3 goodid:3 userid:4 username:4396]
+4
+3
+2020/12/15 20:30:43 Received a message: userid=4&username=4396&goodid=3&buynum=1
+[userid=4 username=4396 goodid=3 buynum=1]
+map[buynum:1 goodid:3 userid:4 username:4396]
+4
+1
+2020/12/15 20:42:10 Received a message: userid=5&username=666&goodid=3&buynum=1
+[userid=5 username=666 goodid=3 buynum=1]
+map[buynum:1 goodid:3 userid:5 username:666]
+5
+1
+2020/12/15 20:46:36 Received a message: userid=5&username=666&goodid=3&buynum=2
+[userid=5 username=666 goodid=3 buynum=2]
+map[buynum:2 goodid:3 userid:5 username:666]
+5
+2
+2020/12/15 20:46:43 Received a message: userid=5&username=666&goodid=3&buynum=2
+[userid=5 username=666 goodid=3 buynum=2]
+map[buynum:2 goodid:3 userid:5 username:666]
+5
+2
+2020/12/15 20:46:52 Received a message: userid=5&username=666&goodid=3&buynum=3
+[userid=5 username=666 goodid=3 buynum=3]
+map[buynum:3 goodid:3 userid:5 username:666]
+5
+3
+2020/12/15 20:47:24 Received a message: userid=5&username=666&goodid=3&buynum=3
+[userid=5 username=666 goodid=3 buynum=3]
+map[buynum:3 goodid:3 userid:5 username:666]
+5
+3
+2020/12/15 20:47:32 Received a message: userid=5&username=666&goodid=3&buynum=3
+[userid=5 username=666 goodid=3 buynum=3]
+map[buynum:3 goodid:3 userid:5 username:666]
+5
+3
+2020/12/15 20:47:38 Received a message: userid=5&username=666&goodid=3&buynum=3
+[userid=5 username=666 goodid=3 buynum=3]
+map[buynum:3 goodid:3 userid:5 username:666]
+5
+3
+2020/12/15 20:47:43 Received a message: userid=5&username=666&goodid=3&buynum=3
+[userid=5 username=666 goodid=3 buynum=3]
+map[buynum:3 goodid:3 userid:5 username:666]
+5
+3
+2020/12/15 20:47:49 Received a message: userid=5&username=666&goodid=3&buynum=3
+[userid=5 username=666 goodid=3 buynum=3]
+map[buynum:3 goodid:3 userid:5 username:666]
+5
+3
+2020/12/15 20:47:54 Received a message: userid=5&username=666&goodid=3&buynum=3
+[userid=5 username=666 goodid=3 buynum=3]
+map[buynum:3 goodid:3 userid:5 username:666]
+5
+3
+2020/12/15 20:48:00 Received a message: userid=5&username=666&goodid=3&buynum=3
+[userid=5 username=666 goodid=3 buynum=3]
+map[buynum:3 goodid:3 userid:5 username:666]
+5
+3
+2020/12/15 20:48:07 Received a message: userid=5&username=666&goodid=3&buynum=3
+[userid=5 username=666 goodid=3 buynum=3]
+map[buynum:3 goodid:3 userid:5 username:666]
+5
+3
+2020/12/15 20:48:12 Received a message: userid=5&username=666&goodid=3&buynum=2
+[userid=5 username=666 goodid=3 buynum=2]
+map[buynum:2 goodid:3 userid:5 username:666]
+5
+2
+2020/12/15 21:17:55 Received a message: userid=1&username=mhy&goodid=1&buynum=2
+[userid=1 username=mhy goodid=1 buynum=2]
+map[buynum:2 goodid:1 userid:1 username:mhy]
+1
+2
+2020/12/17 14:53:34 Received a message: userid=1&username=mhy&goodid=1&buynum=2
+[userid=1 username=mhy goodid=1 buynum=2]
+map[buynum:2 goodid:1 userid:1 username:mhy]
+1
+2
+[mysql] 2020/12/17 14:53:34 packets.go:123: closing bad idle connection: EOF
+2020/12/18 22:30:17 Received a message: userid=1&username=mhy&goodid=1&buynum=1
+[userid=1 username=mhy goodid=1 buynum=1]
+map[buynum:1 goodid:1 userid:1 username:mhy]
+1
+1
+[mysql] 2020/12/18 22:30:17 packets.go:123: closing bad idle connection: EOF
+2020/12/18 22:30:31 Received a message: userid=1&username=mhy&goodid=1&buynum=1&id=5
+[userid=1 username=mhy goodid=1 buynum=1 id=5]
+map[buynum:1 goodid:1 id:5 userid:1 username:mhy]
+1
+1
+2020/12/18 22:31:32 Received a message: userid=1&username=mhy&goodid=1&buynum=1&id=5
+[userid=1 username=mhy goodid=1 buynum=1 id=5]
+map[buynum:1 goodid:1 id:5 userid:1 username:mhy]
+1
+1
+2020/12/18 22:33:49 Received a message: userid=1&username=mhy&goodid=1&buynum=1&id=5
+[userid=1 username=mhy goodid=1 buynum=1 id=5]
+map[buynum:1 goodid:1 id:5 userid:1 username:mhy]
+1
+1
+2020/12/18 22:38:48 Received a message: userid=3&username=gcj&goodid=2&buynum=2
+[userid=3 username=gcj goodid=2 buynum=2]
+map[buynum:2 goodid:2 userid:3 username:gcj]
+3
+2
+2020/12/18 22:57:45 Received a message: userid=1&username=mhy&goodid=1&buynum=2
+[userid=1 username=mhy goodid=1 buynum=2]
+map[buynum:2 goodid:1 userid:1 username:mhy]
+1
+2
+2020/12/18 23:05:45 Received a message: userid=1&username=mhy&goodid=1&buynum=1
+[userid=1 username=mhy goodid=1 buynum=1]
+map[buynum:1 goodid:1 userid:1 username:mhy]
+1
+1
+2020/12/18 23:05:48 Received a message: userid=1&username=mhy&goodid=1&buynum=1
+[userid=1 username=mhy goodid=1 buynum=1]
+map[buynum:1 goodid:1 userid:1 username:mhy]
+1
+1
+2020/12/18 23:06:04 Received a message: userid=1&username=mhy&goodid=1&buynum=1
+[userid=1 username=mhy goodid=1 buynum=1]
+map[buynum:1 goodid:1 userid:1 username:mhy]
+1
+1
+2020/12/18 23:06:32 Received a message: userid=1&username=mhy&goodid=1&buynum=1
+[userid=1 username=mhy goodid=1 buynum=1]
+map[buynum:1 goodid:1 userid:1 username:mhy]
+1
+1
+2020/12/18 23:07:14 Received a message: userid=1&username=mhy&goodid=1&buynum=1
+[userid=1 username=mhy goodid=1 buynum=1]
+map[buynum:1 goodid:1 userid:1 username:mhy]
+1
+1
+2020/12/18 23:07:14 Received a message: userid=1&username=mhy&goodid=1&buynum=1
+[userid=1 username=mhy goodid=1 buynum=1]
+map[buynum:1 goodid:1 userid:1 username:mhy]
+1
+1
+2020/12/18 23:09:47 Received a message: userid=1&username=mhy&goodid=1&buynum=1
+[userid=1 username=mhy goodid=1 buynum=1]
+map[buynum:1 goodid:1 userid:1 username:mhy]
+1
+1
+2020/12/18 23:09:57 Received a message: userid=1&username=mhy&goodid=1&buynum=1
+[userid=1 username=mhy goodid=1 buynum=1]
+map[buynum:1 goodid:1 userid:1 username:mhy]
+1
+1
+2020/12/18 23:10:23 Received a message: userid=1&username=mhy&goodid=1&buynum=1
+[userid=1 username=mhy goodid=1 buynum=1]
+map[buynum:1 goodid:1 userid:1 username:mhy]
+1
+1
+2020/12/18 23:10:42 Received a message: userid=1&username=mhy&goodid=1&buynum=1
+[userid=1 username=mhy goodid=1 buynum=1]
+map[buynum:1 goodid:1 userid:1 username:mhy]
+1
+1
+2020/12/18 23:10:42 Received a message: userid=1&username=mhy&goodid=1&buynum=1
+[userid=1 username=mhy goodid=1 buynum=1]
+map[buynum:1 goodid:1 userid:1 username:mhy]
+1
+1
+2020/12/18 23:10:56 Received a message: userid=3&username=gcj&goodid=2&buynum=2
+[userid=3 username=gcj goodid=2 buynum=2]
+map[buynum:2 goodid:2 userid:3 username:gcj]
+3
+2
+2020/12/28 22:04:26  [*] Waiting for messages. To exit press CTRL+C
+2020/12/28 22:04:51 Received a message: userid=1&username=mhy&goodid=1&buynum=1
+[userid=1 username=mhy goodid=1 buynum=1]
+map[buynum:1 goodid:1 userid:1 username:mhy]
+1
+1
+[mysql] 2020/12/28 22:04:51 packets.go:123: closing bad idle connection: EOF
+2020/12/28 22:06:56 Received a message: userid=1&username=mhy&goodid=1&buynum=2
+[userid=1 username=mhy goodid=1 buynum=2]
+map[buynum:2 goodid:1 userid:1 username:mhy]
+1
+2
+2021/01/05 19:45:41 Received a message: userid=1&username=mhy&goodid=1&buynum=1
+[userid=1 username=mhy goodid=1 buynum=1]
+map[buynum:1 goodid:1 userid:1 username:mhy]
+1
+1
+[mysql] 2021/01/05 19:45:41 packets.go:123: closing bad idle connection: EOF
+2021/01/05 19:46:02 Received a message: userid=1&username=mhy&goodid=1&buynum=1
+[userid=1 username=mhy goodid=1 buynum=1]
+map[buynum:1 goodid:1 userid:1 username:mhy]
+1
+1

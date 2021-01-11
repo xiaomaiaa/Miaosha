@@ -1,0 +1,5 @@
+nohup: ignoring input
+  File "receive.go", line 1
+    package main
+            ^
+SyntaxError: invalid syntax
