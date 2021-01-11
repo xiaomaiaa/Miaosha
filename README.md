@@ -3,7 +3,7 @@
 
 - **用户端**
 
-  可以访问 http://final.qadgztv.cn/index.html。注册之后登陆，也可以使用： 
+  可以访问 <http://final.qadgztv.cn/index.html>。注册之后登陆，也可以使用： 
 
   用户名：user4
 
