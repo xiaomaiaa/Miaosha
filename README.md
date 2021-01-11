@@ -43,8 +43,6 @@ rabbit文件夹是订单处理程序的代码文件。
 
 project.sql是数据库的数据文件。
 
-And there is a file: miaosha.jar. It's an executable java file in Linux system, you can run this file to easily deploy the client.
-
 # 用户端部署说明
 
 ### 所需环境
